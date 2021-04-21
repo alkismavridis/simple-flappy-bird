@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="js/Game.js"></script>
+    <script src="js/GameRenderer.js"></script>
+    <style>
+        canvas {
+            box-sizing: border-box;
+            border: solid 3px black;
+            width: 400px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <p style="user-select: none;">Hit space or click to play</p>
+    <canvas width="1000" height="1000"></canvas>
+    <script>
+        const game = new Game();
+        const renderer = new GameRenderer(document.querySelector("canvas"), game);
+        document.body.addEventListener("keydown", e => {
+          if (e.code === "Space") {
+            game.onMainButton();
+          }
+        });
+
+        document.querySelector("canvas").addEventListener("click", () => game.onMainButton());
+    </script>
+</body>
+</html>
