@@ -1,6 +1,6 @@
 
 const RENDERER = {
-  CLOCK_TIK: 60,
+  CLOCK_TIK: 30,
   COLORS: {
     FLAPPY_BIRD_PLAYS: "#f4f858",
     FLAPPY_BIRD_LOST: "#FF0000",
@@ -67,6 +67,7 @@ class GameRenderer {
     this._ctx.beginPath();
     this._ctx.arc(flappyX, flappyY, flappyWidth / 2, 0, 2 * Math.PI, false);
     this._ctx.fill();
+    this._ctx.closePath();
   }
 
   paintObstacle(obstacle) {

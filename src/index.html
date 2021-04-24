@@ -6,6 +6,8 @@
 
     <script src="js/Game.js"></script>
     <script src="js/GameRenderer.js"></script>
+    <script src="js/WebGlWrapper.js"></script>
+    <script src="js/WebglGameRenderer.js"></script>
     <style>
         canvas {
             box-sizing: border-box;
@@ -20,7 +22,13 @@
     <canvas width="1000" height="1000"></canvas>
     <script>
         const game = new Game();
-        const renderer = new GameRenderer(document.querySelector("canvas"), game);
+        if (window.location.search.toLowerCase().includes("webgl")) {
+          try { new WebglGameRenderer(document.querySelector("canvas"), game); }
+          catch (e) { window.alert(e.message); }
+        } else {
+          new GameRenderer(document.querySelector("canvas"), game);
+        }
+        
         document.body.addEventListener("keydown", e => {
           if (e.code === "Space") {
             game.onMainButton();
